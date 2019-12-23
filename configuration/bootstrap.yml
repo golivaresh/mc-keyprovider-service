@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: mc-keyprovider-service
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      enabled: true
+      discovery:
+        service-id: mc-config-server
+        enabled: true
+#      profile: ${spring.profiles.active}
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    ROOT: ERROR
+    org.springframework.cloud.config: INFO
+#  file: /tmp/logs/mc-keyprovider-service/mc-keyprovider-service.log
+
+#  config:    ${spn.spring.cloud.config.runtime.uri}/${spring.application.name}/${spring.profiles.active}/${spring.cloud.config.label:master}/logback-spring.xml
+
+
+
+#health:
+#  config:
+#    enabled: false
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include=*
